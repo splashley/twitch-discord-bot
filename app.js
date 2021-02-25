@@ -1,3 +1,4 @@
+// Bot Information
 require("dotenv").config();
 const { QuickTwitchBot } = require("quick-chat-bot");
 const path = require("path");
