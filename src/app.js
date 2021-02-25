@@ -1,5 +1,6 @@
 // Bot Information
 require("dotenv").config();
+
 const { QuickTwitchBot } = require("quick-chat-bot");
 const path = require("path");
 const bot = new QuickTwitchBot({
@@ -8,4 +9,5 @@ const bot = new QuickTwitchBot({
   channel: "splashley",
   commandsDir: path.join(__dirname, "commands"),
 });
+
 bot.connect();

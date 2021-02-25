@@ -1,0 +1,17 @@
+{
+  "name": "twitch-discord-bot",
+  "version": "1.0.0",
+  "main": "./src/app.js",
+  "repository": "https://github.com/splashley/twitch-discord-bot",
+  "license": "MIT",
+  "scripts": {
+    "nodemon": "./src/app.js",
+    "start": "node ./src/app.js"
+  },
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "quick-chat-bot": "^0.8.0",
+    "spotify-web-api-node": "^5.0.2"
+  },
+  "devDependencies": {}
+}
