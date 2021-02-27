@@ -9,9 +9,9 @@
     "start": "node ./src/app.js"
   },
   "dependencies": {
+    "axios": "^0.21.1",
     "dotenv": "^8.2.0",
-    "quick-chat-bot": "^0.8.0",
-    "spotify-web-api-node": "^5.0.2"
+    "quick-chat-bot": "^0.8.0"
   },
   "devDependencies": {}
 }

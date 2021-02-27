@@ -1,39 +1,30 @@
-// Spotify API Call
-const SpotifyWebApi = require("spotify-web-api-node");
+const { default: axios } = require("axios");
+const ID = process.env.SPOTIFY_CLIENTID;
+const SECRET = process.env.SPOTIFY_CLIENTSECRET;
+const authBuffer = Buffer.from(`${ID}:${SECRET}`).toString("base64");
 
-const spotifyApi = new SpotifyWebApi({
-  clientId: process.env.SPOTIFY_CLIENTID,
-  clientSecret: process.env.SPOTIFY_CLIENTSECRET,
-  scope: ["user-read-currently-playing"],
-});
-
-module.exports = musicCommand = {
+module.exports = {
   text: "!music",
   callback: (channel, tags, message, self, client) => {
-    spotifyApi.clientCredentialsGrant().then(
-      function (data) {
-        console.log("The access token is " + data.body["access_token"]);
-        console.log("The token expires in " + data.body["expires_in"]);
-        spotifyApi.setAccessToken(data.body["access_token"]);
+    axios({
+      method: "POST",
+      url: "https://accounts.spotify.com/api/token",
+      headers: { Authorization: `Basic ${authBuffer}` },
+      params: {
+        grant_type: "refresh_token",
+        refresh_token: process.env.SPOTIFY_AUTH_REFRESH_TOKEN,
       },
-      function (err) {
-        console.log(
-          "Something went wrong when retrieving an access token",
-          err
-        );
-        client.say(channel, `${err} :'(`);
-      }
-    );
-    spotifyApi.getMyCurrentPlayingTrack().then(
-      function (data) {
-        console.log("Now playing: " + data.body.item.name);
-        const currentSongName = data.body.item.name;
-        client.say(channel, `I'm currently listening to ${currentSongName}`);
-      },
-      function (err) {
-        console.log("Something went wrong!", err);
-        client.say(channel, `${err} :'(`);
-      }
-    );
+    }).then(({ data: { access_token } }) => {
+      axios({
+        method: "GET",
+        url: "https://api.spotify.com/v1/me/player/currently-playing?",
+        headers: { Authorization: "Bearer " + access_token },
+      }).then(({ statusText, data: { item } }) => {
+        const message = `catJAM Currently listening to ${item.name} by ${item.artists[0].name} - ${item.external_urls.spotify}`;
+        if (statusText === "No Content")
+          client.say(channel, "No music playing");
+        else client.say(channel, message);
+      });
+    });
   },
 };
