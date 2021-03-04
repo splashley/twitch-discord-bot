@@ -3,7 +3,7 @@ module.exports = {
   callback: (channel, tags, message, self, client) => {
     client.say(
       channel,
-      "!about, !project, !bttvemotes, !music, !setup, !specs, !twitter, !discord"
+      "!hug, !about, !lurk, !8ball, !gamble, !points, !quote, !project, !banme, !bttvemotes, !music, !setup, !specs, !twitter, !discord, !instagram, !socials"
     );
   },
 };

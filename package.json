@@ -11,7 +11,8 @@
   "dependencies": {
     "axios": "^0.21.1",
     "dotenv": "^8.2.0",
-    "quick-chat-bot": "^0.8.0"
+    "quick-chat-bot": "^0.8.0",
+    "random-word": "^2.0.0"
   },
   "devDependencies": {}
 }
