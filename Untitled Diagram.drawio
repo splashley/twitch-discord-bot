@@ -1,0 +1,100 @@
+<mxfile host="app.diagrams.net" modified="2021-03-05T02:47:55.444Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.190 Safari/537.36" etag="al7iCHw9PkeD98jALIaP" version="14.4.4" type="github">
+  <diagram id="0duEdsrzDNO2O6nuFxug" name="Page-1">
+    <mxGraphModel dx="932" dy="804" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="JxWrHPCpPN3WZG3Q-2p1-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="JxWrHPCpPN3WZG3Q-2p1-1" target="JxWrHPCpPN3WZG3Q-2p1-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="JxWrHPCpPN3WZG3Q-2p1-1" value="User enters !wordgame in chat" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="310" y="20" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="JxWrHPCpPN3WZG3Q-2p1-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="JxWrHPCpPN3WZG3Q-2p1-2" target="JxWrHPCpPN3WZG3Q-2p1-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="JxWrHPCpPN3WZG3Q-2p1-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="JxWrHPCpPN3WZG3Q-2p1-2" target="JxWrHPCpPN3WZG3Q-2p1-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="JxWrHPCpPN3WZG3Q-2p1-2" value="Triggers verifyWordLength()&lt;br&gt;A random word is given&lt;br&gt;Function verifies whether the word length is 5 or less characters" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="180" y="110" width="160" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="JxWrHPCpPN3WZG3Q-2p1-36" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="JxWrHPCpPN3WZG3Q-2p1-3" target="JxWrHPCpPN3WZG3Q-2p1-2">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="260" y="230" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="JxWrHPCpPN3WZG3Q-2p1-3" value="If word is 5 or less characters" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="360" y="200" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="JxWrHPCpPN3WZG3Q-2p1-18" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="JxWrHPCpPN3WZG3Q-2p1-8" target="JxWrHPCpPN3WZG3Q-2p1-11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="JxWrHPCpPN3WZG3Q-2p1-8" value="If word is longer than 5 characters" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="30" y="210" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="JxWrHPCpPN3WZG3Q-2p1-19" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="JxWrHPCpPN3WZG3Q-2p1-11" target="JxWrHPCpPN3WZG3Q-2p1-12">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="JxWrHPCpPN3WZG3Q-2p1-11" value="Triggers shuffleWord()&lt;br&gt;The word is taken and the characters are randomly shuffled" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="15" y="310" width="150" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="JxWrHPCpPN3WZG3Q-2p1-21" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="JxWrHPCpPN3WZG3Q-2p1-12" target="JxWrHPCpPN3WZG3Q-2p1-20">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="JxWrHPCpPN3WZG3Q-2p1-12" value="Stores word, shuffled word and sets status to true in Airtable" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="20" y="420" width="140" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="JxWrHPCpPN3WZG3Q-2p1-24" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="JxWrHPCpPN3WZG3Q-2p1-20" target="JxWrHPCpPN3WZG3Q-2p1-22">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="JxWrHPCpPN3WZG3Q-2p1-20" value="Splashleybot sends shuffledword to chat" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="30" y="520" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="JxWrHPCpPN3WZG3Q-2p1-25" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="JxWrHPCpPN3WZG3Q-2p1-22" target="JxWrHPCpPN3WZG3Q-2p1-23">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="JxWrHPCpPN3WZG3Q-2p1-22" value="Set limits on guesses in chat" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="210" y="315" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="JxWrHPCpPN3WZG3Q-2p1-29" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="JxWrHPCpPN3WZG3Q-2p1-23" target="JxWrHPCpPN3WZG3Q-2p1-26">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="JxWrHPCpPN3WZG3Q-2p1-23" value="User guesses answer&lt;br&gt;ie: (!guessword [guessed word]" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="415" y="315" width="190" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="JxWrHPCpPN3WZG3Q-2p1-33" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.75;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="JxWrHPCpPN3WZG3Q-2p1-26" target="JxWrHPCpPN3WZG3Q-2p1-31">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="640" y="440" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="JxWrHPCpPN3WZG3Q-2p1-34" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.575;entryY=0.05;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="JxWrHPCpPN3WZG3Q-2p1-26" target="JxWrHPCpPN3WZG3Q-2p1-30">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="JxWrHPCpPN3WZG3Q-2p1-26" value="Verify whether answer received is correct or not&amp;nbsp;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="450" y="410" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="JxWrHPCpPN3WZG3Q-2p1-43" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="JxWrHPCpPN3WZG3Q-2p1-30" target="JxWrHPCpPN3WZG3Q-2p1-41">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="JxWrHPCpPN3WZG3Q-2p1-30" value="If answer is correct" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="360" y="510" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="JxWrHPCpPN3WZG3Q-2p1-40" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="JxWrHPCpPN3WZG3Q-2p1-31">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="600" y="603" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="JxWrHPCpPN3WZG3Q-2p1-31" value="If answer is incorrect" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="540" y="510" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="JxWrHPCpPN3WZG3Q-2p1-37" value="Return in chat message to user &quot;Sorry that is incorrect, try again next time!&quot;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="550" y="600" width="120" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="JxWrHPCpPN3WZG3Q-2p1-41" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="365" y="615" width="120" height="75" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
