@@ -1,8 +1,13 @@
 const randomWord = require("random-word");
+const Airtable = require("airtable");
+const base = new Airtable({ apiKey: process.env.AIRTABLE_API_KEY }).base(
+  "appIkxuV9woNq04JG"
+);
 
 module.exports = {
   text: "!wordgame",
   callback: (channel, tags, message, self, client) => {
+    // Function generates a random word, verifies length and passes word on to Shuffleword function
     const verifyWordLength = () => {
       let word = randomWord();
       console.log(word);
@@ -12,14 +17,18 @@ module.exports = {
         shuffleWord(word);
       }
     };
+
+    // Gets word from verifyWordLength and shuffles it.
     const shuffleWord = (word) => {
-      const newword = word.split("").sort(func).join("");
-      console.log(newword);
+      function func(a, b) {
+        return 0.5 - Math.random();
+      }
+      const shuffledWord = word.split("").sort(func).join("");
+      console.log(shuffledWord);
     };
-    function func(a, b) {
-      return 0.5 - Math.random();
-    }
-    verifyWordLength();
-    client.say(channel, "");
+
+    const storeGameDetails = () => {};
+    // verifyWordLength();
+    // client.say(channel, "");
   },
 };
