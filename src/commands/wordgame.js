@@ -7,28 +7,51 @@ const base = new Airtable({ apiKey: process.env.AIRTABLE_API_KEY }).base(
 module.exports = {
   text: "!wordgame",
   callback: (channel, tags, message, self, client) => {
-    // Function generates a random word, verifies length and passes word on to Shuffleword function
+    let originalWord = "";
+    let changedWord = "";
+
+    const gameStatus = () => {};
+
     const verifyWordLength = () => {
       let word = randomWord();
-      console.log(word);
       if (word.length <= 5) {
         verifyWordLength();
       } else {
+        originalWord = word;
         shuffleWord(word);
       }
     };
 
-    // Gets word from verifyWordLength and shuffles it.
     const shuffleWord = (word) => {
       function func(a, b) {
         return 0.5 - Math.random();
       }
       const shuffledWord = word.split("").sort(func).join("");
-      console.log(shuffledWord);
+      changedWord = shuffledWord;
+      storeGameDetails(originalWord, changedWord);
     };
 
-    const storeGameDetails = () => {};
-    // verifyWordLength();
-    // client.say(channel, "");
+    const storeGameDetails = (origWord, shuffWord) => {
+      base("WordGame").create(
+        [
+          {
+            fields: {
+              randomWord: `${origWord}`,
+              randomWordShuffled: `${shuffWord}`,
+              status: "true",
+            },
+          },
+        ],
+        function (err, records) {
+          if (err) {
+            console.error(err);
+            return;
+          }
+        }
+      );
+    };
+
+    verifyWordLength();
+    client.say(channel, `The shuffled word is ${changedWord}. Good luck!`);
   },
 };
