@@ -1,8 +1,16 @@
 const randomWord = require("random-word");
-const Airtable = require("airtable");
-const base = new Airtable({ apiKey: process.env.AIRTABLE_API_KEY }).base(
-  "appIkxuV9woNq04JG"
-);
+const firebase = require("firebase");
+const firebaseConfig = {
+  apiKey: process.env.apiKey,
+  authDomain: "twitchwordgame.firebaseapp.com",
+  projectId: "twitchwordgame",
+  storageBucket: "twitchwordgame.appspot.com",
+  messagingSenderId: "826647704969",
+  appId: "1:826647704969:web:77b1105a155656c0339d58",
+};
+
+const firebaseApp = firebase.initializeApp(firebaseConfig);
+const db = firebaseApp.firestore();
 
 module.exports = {
   text: "!wordgame",
@@ -32,23 +40,21 @@ module.exports = {
     };
 
     const storeGameDetails = (origWord, shuffWord) => {
-      base("WordGame").create(
-        [
-          {
-            fields: {
-              randomWord: `${origWord}`,
-              randomWordShuffled: `${shuffWord}`,
-              status: "true",
-            },
-          },
-        ],
-        function (err, records) {
-          if (err) {
-            console.error(err);
-            return;
-          }
-        }
-      );
+      var wordGameRef = db.collection("WordGame").doc("wordGameState");
+
+      return wordGameRef
+        .update({
+          active: true,
+          original: `${origWord}`,
+          scrambled: `${shuffWord}`,
+        })
+        .then(() => {
+          console.log("Document successfully updated!");
+        })
+        .catch((error) => {
+          // The document probably doesn't exist.
+          console.error("Error updating document: ", error);
+        });
     };
 
     verifyWordLength();

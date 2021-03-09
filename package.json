@@ -9,9 +9,9 @@
     "start": "node ./src/app.js"
   },
   "dependencies": {
-    "airtable": "^0.10.1",
     "axios": "^0.21.1",
     "dotenv": "^8.2.0",
+    "firebase": "^8.2.10",
     "quick-chat-bot": "^0.8.0",
     "random-word": "^2.0.0"
   }
