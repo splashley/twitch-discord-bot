@@ -1,16 +1,5 @@
 const randomWord = require("random-word");
-const firebase = require("firebase");
-const firebaseConfig = {
-  apiKey: process.env.apiKey,
-  authDomain: "twitchwordgame.firebaseapp.com",
-  projectId: "twitchwordgame",
-  storageBucket: "twitchwordgame.appspot.com",
-  messagingSenderId: "826647704969",
-  appId: "1:826647704969:web:77b1105a155656c0339d58",
-};
-
-const firebaseApp = firebase.initializeApp(firebaseConfig);
-const db = firebaseApp.firestore();
+const { getGameStatus } = require("../firebase");
 
 module.exports = {
   text: "!wordgame",
@@ -18,7 +7,29 @@ module.exports = {
     let originalWord = "";
     let changedWord = "";
 
-    const gameStatus = () => {};
+    const gameStatus = () => {
+      docRef
+        .get()
+        .then((doc) => {
+          if (doc.exists) {
+            let getGameStatus = doc.data();
+            if (getGameStatus.active === true) {
+              client.say(
+                channel,
+                `There is a game in progress already. The scrambled word is ${currentGameStatus.scrambled}. Good luck!`
+              );
+            } else {
+              verifyWordLength();
+            }
+          } else {
+            // doc.data() will be undefined in this case
+            console.log("No such document!");
+          }
+        })
+        .catch((error) => {
+          console.log("Error getting document:", error);
+        });
+    };
 
     const verifyWordLength = () => {
       let word = randomWord();
@@ -37,12 +48,11 @@ module.exports = {
       const shuffledWord = word.split("").sort(func).join("");
       changedWord = shuffledWord;
       storeGameDetails(originalWord, changedWord);
+      client.say(channel, `The shuffled word is ${changedWord}. Good luck!`);
     };
 
     const storeGameDetails = (origWord, shuffWord) => {
-      var wordGameRef = db.collection("WordGame").doc("wordGameState");
-
-      return wordGameRef
+      return getGameStatus
         .update({
           active: true,
           original: `${origWord}`,
@@ -57,7 +67,6 @@ module.exports = {
         });
     };
 
-    verifyWordLength();
-    client.say(channel, `The shuffled word is ${changedWord}. Good luck!`);
+    gameStatus();
   },
 };
