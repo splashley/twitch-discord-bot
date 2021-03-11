@@ -1,16 +1,3 @@
-const firebase = require("firebase");
-const firebaseConfig = {
-  apiKey: process.env.apiKey,
-  authDomain: "twitchwordgame.firebaseapp.com",
-  projectId: "twitchwordgame",
-  storageBucket: "twitchwordgame.appspot.com",
-  messagingSenderId: "826647704969",
-  appId: "1:826647704969:web:77b1105a155656c0339d58",
-};
-const firebaseApp = firebase.initializeApp(firebaseConfig);
-const db = firebaseApp.firestore();
-var docRef = db.collection("WordGame").doc("wordGameState");
-
 module.exports = {
   text: "!guess",
   callback: (channel, tags, message, self, client) => {
