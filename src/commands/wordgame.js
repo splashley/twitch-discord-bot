@@ -1,5 +1,5 @@
 const randomWord = require("random-word");
-const { gameStatus } = require("../firebase");
+const firebase = require("../firebase");
 
 module.exports = {
   text: "!wordgame",
@@ -14,10 +14,21 @@ module.exports = {
       );
     };
 
-    const verifyWordLength = () => {
+    const checkGameStatus = async () => {
+      const { active, scrambled } = await firebase.getGameStatus();
+      if (active === "true") {
+        client.say(
+          `There is already a game going on. The scrambled word is ${scrambled}. Type !guess word to guess your answer. Good luck!`
+        );
+      } else {
+        generateWord();
+      }
+    };
+
+    const generateWord = () => {
       let word = randomWord();
       if (word.length <= 5) {
-        verifyWordLength();
+        generateWord();
       } else {
         originalWord = word;
         shuffleWord(word);
@@ -30,10 +41,10 @@ module.exports = {
       }
       const shuffledWord = word.split("").sort(func).join("");
       changedWord = shuffledWord;
-      storeGameDetails(originalWord, changedWord);
+      firebase.storeGameDetails(originalWord, changedWord);
       client.say(channel, `The shuffled word is ${changedWord}. Good luck!`);
     };
 
-    gameStatus();
+    checkGameStatus();
   },
 };

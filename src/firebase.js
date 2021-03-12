@@ -16,13 +16,13 @@ const db = firebaseApp.firestore();
 const docRef = db.collection("WordGame").doc("wordGameState");
 
 const getGameStatus = async () => {
-  const gameData = await docRef.doc().get();
+  const gameData = await docRef.get();
   return gameData.exists ? gameData.data() : null;
 };
 
 const storeGameDetails = (origWord, shuffWord) => {
   return getGameStatus
-    .update({
+    .set({
       active: true,
       original: `${origWord}`,
       scrambled: `${shuffWord}`,
@@ -36,34 +36,7 @@ const storeGameDetails = (origWord, shuffWord) => {
     });
 };
 
-const gameStatus = () => {
-  docRef
-    .get()
-    .then((doc) => {
-      if (doc.exists) {
-        let getGameStatus = doc.data();
-        if (getGameStatus.active === true) {
-          gameStatusTrue();
-        } else {
-          verifyWordLength();
-        }
-      } else {
-        // doc.data() will be undefined in this case
-        console.log("No such document!");
-      }
-    })
-    .catch((error) => {
-      console.log("Error getting document:", error);
-    });
-};
-
-const logout = () => {
-  firebase.auth().signOut();
-};
-
 module.exports = {
   getGameStatus,
   storeGameDetails,
-  gameStatus,
-  logout,
 };
