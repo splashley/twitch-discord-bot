@@ -41,8 +41,27 @@ module.exports = {
       }
       const shuffledWord = word.split("").sort(func).join("");
       changedWord = shuffledWord;
-      firebase.storeGameDetails(originalWord, changedWord);
-      client.say(channel, `The shuffled word is ${changedWord}. Good luck!`);
+      storeGameDetails(originalWord, changedWord);
+      client.say(
+        channel,
+        `The shuffled word is ${changedWord}. You can guess by entering !guess with your guessed word. Good luck!`
+      );
+    };
+
+    const storeGameDetails = (origWord, shuffWord) => {
+      firebase
+        .setGameStatus({
+          active: true,
+          original: `${origWord}`,
+          scrambled: `${shuffWord}`,
+        })
+        .then(() => {
+          console.log("Document successfully updated!");
+        })
+        .catch((error) => {
+          // The document probably doesn't exist.
+          console.error("Error updating document: ", error);
+        });
     };
 
     checkGameStatus();

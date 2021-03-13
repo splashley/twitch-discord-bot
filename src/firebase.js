@@ -1,5 +1,4 @@
 const firebase = require("firebase");
-const { gameStatusTrue } = require("./commands/wordgame");
 
 const config = {
   apiKey: process.env.apiKey,
@@ -20,23 +19,12 @@ const getGameStatus = async () => {
   return gameData.exists ? gameData.data() : null;
 };
 
-const storeGameDetails = (origWord, shuffWord) => {
-  return getGameStatus
-    .set({
-      active: true,
-      original: `${origWord}`,
-      scrambled: `${shuffWord}`,
-    })
-    .then(() => {
-      console.log("Document successfully updated!");
-    })
-    .catch((error) => {
-      // The document probably doesn't exist.
-      console.error("Error updating document: ", error);
-    });
+const setGameStatus = async (data) => {
+  const resData = await docRef.set(data);
+  return resData;
 };
 
 module.exports = {
   getGameStatus,
-  storeGameDetails,
+  setGameStatus,
 };
