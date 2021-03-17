@@ -10,10 +10,14 @@ const config = {
 };
 
 const firebaseApp = firebase.initializeApp(config);
+const increment = firebase.firestore.FieldValue.increment(1);
 
 const db = firebaseApp.firestore();
 const docRef = db.collection("WordGame").doc("wordGameState");
-const highScoresDoc = db.collection("WordGame").doc("highScores");
+const highScoresDoc = db
+  .collection("WordGame")
+  .doc("highScores")
+  .collection("players");
 
 const getGameStatus = async () => {
   const gameData = await docRef.get();
@@ -30,13 +34,19 @@ const setGameStatus = async (data) => {
   return resData;
 };
 
-const setHighScores = async (data) => {
-  const highScoreData = await highScoresDoc.set(data);
+const setHighScores = async ({ username, numOfWins }) => {
+  const highScoreData = await highScoresDoc
+    .doc(username)
+    .update({ numOfWins: increment })
+    .catch(() => {
+      highScoresDoc.doc(username).set({ numOfWins: 1 });
+    });
   return highScoreData;
 };
 
 module.exports = {
   getGameStatus,
   setGameStatus,
+  setHighScores,
   getHighScores,
 };

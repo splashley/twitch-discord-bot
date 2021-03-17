@@ -21,6 +21,10 @@ module.exports = {
             original: "",
             scrambled: "",
           });
+          firebase.setHighScores({
+            numOfWins: 1,
+            username: `${guesser}`,
+          });
           client.say(
             channel,
             `pepeD Congrats, ${guesser}, you got it right! pepeD `
