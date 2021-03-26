@@ -1,6 +1,6 @@
 module.exports = {
   text: "!discord",
   callback: (channel, tags, message, self, client) => {
-    client.say(channel, "Work in progress.. coming soon :)");
+    client.say(channel, "https://discord.gg/S3dXsyTs Come join us!");
   },
 };
