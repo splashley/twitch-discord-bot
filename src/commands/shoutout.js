@@ -3,7 +3,11 @@ module.exports = {
   callback: (channel, tags, message, self, client) => {
     const parse = message.slice(1).split(" ");
     const streamerName = parse.splice(1);
-    if (tags.username === "splashley" || tags.username === "0neguy") {
+    if (
+      tags.username === "splashley" ||
+      tags.username === "0neguy" ||
+      tags.username === "RyanKHawkins"
+    ) {
       client.say(
         channel,
         `pepeD Check out ${streamerName}! Their Twitch is www.twitch.com/${streamerName} pepeD`
