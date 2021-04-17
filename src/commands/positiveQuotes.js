@@ -8,6 +8,8 @@ module.exports = {
       "Be proud because you're doing it, not because you're good",
       "The struggle you’re in today is developing the strength you need tomorrow. - Robert Tew",
       "You are never too old to set another goal or to dream a new dream. - C.S. Lewis",
+      "Good decisions come from experience, but experience comes from making bad decisions. - Mark Twain",
+      "One is always a noob when it comes to learning new things. -- nooberthanyou",
     ];
     const selectedMessage =
       storedMessagesArr[Math.floor(Math.random() * storedMessagesArr.length)];
