@@ -3,7 +3,12 @@ module.exports = {
   callback: (channel, tags, message, self, client) => {
     const parse = message.slice(1).split(" ");
     const streamerName = parse.splice(1);
-    const authorized = ["splashley", "0neguy", "ryankhawkins"];
+    const authorized = [
+      "splashley",
+      "0neguy",
+      "ryankhawkins",
+      "geekygirlsarah",
+    ];
     if (authorized.includes(tags.username)) {
       client.say(
         channel,
