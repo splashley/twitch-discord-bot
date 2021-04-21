@@ -1,15 +1,10 @@
+const authorized = require("./authorized");
+
 module.exports = {
   text: "!so",
   callback: (channel, tags, message, self, client) => {
     const parse = message.slice(1).split(" ");
     const streamerName = parse.splice(1);
-    const authorized = [
-      "splashley",
-      "0neguy",
-      "ryankhawkins",
-      "geekygirlsarah",
-      "ckdarby",
-    ];
     if (authorized.includes(tags.username)) {
       client.say(
         channel,

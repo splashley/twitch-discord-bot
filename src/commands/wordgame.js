@@ -1,5 +1,6 @@
 const firebase = require("../firebase");
 const randomWord = require("random-word");
+const authorized = require("./authorized");
 
 module.exports = {
   text: "!wordgame",
@@ -47,7 +48,7 @@ module.exports = {
         });
     };
     const checkGameStatus = async () => {
-      if (message === "!wordgame reset") {
+      if (message === "!wordgame reset" && authorized.includes(tags.username)) {
         generateWord();
       } else {
         const { active, scrambled } = await firebase.getGameStatus();
