@@ -1,5 +1,5 @@
-const randomWord = require("random-word");
 const firebase = require("../firebase");
+const randomWord = require("random-word");
 
 module.exports = {
   text: "!wordgame",
@@ -7,16 +7,18 @@ module.exports = {
     let originalWord = "";
     let changedWord = "";
 
-    const checkGameStatus = async () => {
-      const { active, scrambled } = await firebase.getGameStatus();
-      if (active === true) {
-        client.say(
-          channel,
-          `There is already a game going on. The scrambled word is ${scrambled}. Type !guess word to guess your answer. Good luck!`
-        );
-      } else {
-        generateWord();
+    const shuffleWord = (word) => {
+      function func(a, b) {
+        return 0.5 - Math.random();
       }
+
+      const shuffledWord = word.split("").sort(func).join("");
+      changedWord = shuffledWord;
+      storeGameDetails(originalWord, changedWord);
+      client.say(
+        channel,
+        `The shuffled word is ${changedWord}. You can guess by entering !guess with your guessed word. Good luck!`
+      );
     };
 
     const generateWord = () => {
@@ -27,19 +29,6 @@ module.exports = {
         originalWord = word;
         shuffleWord(word);
       }
-    };
-
-    const shuffleWord = (word) => {
-      function func(a, b) {
-        return 0.5 - Math.random();
-      }
-      const shuffledWord = word.split("").sort(func).join("");
-      changedWord = shuffledWord;
-      storeGameDetails(originalWord, changedWord);
-      client.say(
-        channel,
-        `The shuffled word is ${changedWord}. You can guess by entering !guess with your guessed word. Good luck!`
-      );
     };
 
     const storeGameDetails = (origWord, shuffWord) => {
@@ -57,7 +46,23 @@ module.exports = {
           console.error("Error updating document: ", error);
         });
     };
+    const checkGameStatus = async () => {
+      if (message === "!wordgame reset") {
+        generateWord();
+      } else {
+        const { active, scrambled } = await firebase.getGameStatus();
+        if (active === true) {
+          client.say(
+            channel,
+            `There is already a game going on. The scrambled word is ${scrambled}. Type !guess word to guess your answer. Good luck!`
+          );
+        } else {
+          generateWord();
+        }
+      }
+    };
 
     checkGameStatus();
+    console.log(message);
   },
 };

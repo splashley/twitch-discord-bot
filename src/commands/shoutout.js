@@ -8,6 +8,7 @@ module.exports = {
       "0neguy",
       "ryankhawkins",
       "geekygirlsarah",
+      "ckdarby",
     ];
     if (authorized.includes(tags.username)) {
       client.say(
