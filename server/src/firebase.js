@@ -49,4 +49,5 @@ module.exports = {
   setGameStatus,
   setHighScores,
   getHighScores,
+  db,
 };
