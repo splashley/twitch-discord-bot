@@ -50,4 +50,5 @@ module.exports = {
   setHighScores,
   getHighScores,
   db,
+  firebase,
 };
