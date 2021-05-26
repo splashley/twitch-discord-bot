@@ -1,5 +1,5 @@
 # My Twitch/Discord Bot (Updated frequently)
-Using the quick-chat-bot library and primarily node.js, I created interactive custom commands for my Twitch bot.
+Using the quick-chat-bot library and primarily node.js, I created interactive custom commands for my Twitch bot that can be used when I'm streaming on Twitch.
 
 ## How It's Made:
 
