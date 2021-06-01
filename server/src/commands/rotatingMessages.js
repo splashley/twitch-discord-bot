@@ -2,7 +2,7 @@ module.exports = {
   text: "!test",
   callback: (channel, tags, message, self, client) => {
     const storedMessagesArr = [
-      "Our Discord https://discord.gg/bJugrZZx is now LIVE! Come join us and chat about anything from web dev to gaming!",
+      "Our Discord https://discord.gg/ZJrrvp4U is now LIVE! Come join us and chat about anything from web dev to gaming!",
       "!drop klassy3Drop",
       "Play the drop game by typing in the command !drop with an emote of your choice. Hit 100 and become VIP",
       "For 1500 channel points, you can bet with/against other watchers on whether Splashley will chew on a bad or good jellybean.",
