@@ -9,7 +9,7 @@ module.exports = {
       "Play the WordGame! Type !wordgame to start!",
       "Thank you so much for watching this stream <3 It means a lot to me to have you here.",
       "Need some positive words of encouragement? Type !positive",
-      "Guess the number! Type !guess to start!",
+      "Guess the number! Type !guessnumber to start!",
       "!drop splash86Hydrate ",
     ];
 
