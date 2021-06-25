@@ -1,6 +1,6 @@
 const firebase = require("../firebase");
 const randomWord = require("random-word");
-const authorized = require("./authorized");
+const authorized = require("../authorized");
 
 module.exports = {
   text: "!wordgame",

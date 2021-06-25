@@ -1,4 +1,4 @@
-const authorized = require("./authorized");
+const authorized = require("../authorized");
 
 module.exports = {
   text: "!so",

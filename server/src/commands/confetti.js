@@ -1,5 +1,5 @@
 const { db } = require("../firebase");
-const authorized = require("./authorized");
+const authorized = require("../authorized");
 
 const overlayCollection = db.collection("overlays");
 
