@@ -3,7 +3,7 @@ module.exports = {
   callback: (channel, tags, message, self, client) => {
     client.say(
       channel,
-      "Samurai Zero is a 3rd person tactical hack and slash game set in the beautiful science fantasy world of Edo, inspired by the Feudal Japanese Samurai. Learn more about it here https://szero.dev/steam"
+      "Hey! I'm a frontend developer that streams my web development journey here on Twitch. Follow me as I work on projects, read docs, learn new technology and more! I appreciate your support."
     );
   },
 };
