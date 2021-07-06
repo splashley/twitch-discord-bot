@@ -13,8 +13,12 @@
     "confetti-js": "^0.0.18",
     "dotenv": "^8.2.0",
     "firebase": "^8.2.10",
+    "nodemon": "^2.0.9",
     "obs-websocket-js": "^4.0.2",
     "quick-chat-bot": "^0.8.0",
-    "random-word": "^2.0.0"
+    "random-word": "^2.0.0",
+    "twitch": "^4.6.0",
+    "twitch-auth": "^4.6.0",
+    "twitch-eventsub": "^4.6.0"
   }
 }
