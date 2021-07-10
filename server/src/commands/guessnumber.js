@@ -23,18 +23,18 @@ module.exports = {
       const { active, randomNumber } = await getGameStatus();
       // If there is no active game, we need to create a randomNumber and update Firebase
       if (active === false) {
-        const generatedNumber = Math.floor(Math.random() * 101);
+        const generatedNumber = Math.floor(Math.random() * 26);
         setGameStatus({
           active: true,
           randomNumber: `${generatedNumber}`,
         });
         // If there is an active game, we need to take the number and see if it's between 0 and 100.
       } else {
-        if (guessedNumber > 101 || guessedNumber < 0) {
+        if (guessedNumber > 25 || guessedNumber < 0) {
           // If the number is over 100 or lower than 0, return a "choose between 0 to 100 message" to user
           client.say(
             channel,
-            `Hey ${user}! You can only guess between 0 and 100! Try again`
+            `Hey ${user}! You can only guess between 0 and 25! Try again`
           );
         } else {
           // If the number is between 0 and 100, compare it to the one stored in Firebase.
