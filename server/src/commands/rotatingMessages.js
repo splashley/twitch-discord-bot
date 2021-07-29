@@ -11,8 +11,8 @@ module.exports = {
       "Need some positive words of encouragement? Type !positive",
       "Guess the number! Type !guessnumber to start!",
       "Backseat programming is allowed but can get a bit overwhelming if too many people are helping at once!",
-      "Play Rock, Paper, Scissors! eg: !rpg rock",
-      "Curious about the chat overlay? It's made possible by the one and only @cmgriffing at www.streamparrot.com!",
+      "Play Rock, Paper, Scissors! eg: !rps rock",
+      "Curious about the chat overlay? It's made possible by the one and only @cmgriffing at https://streamparrot.com/",
       "!drop splash86Hydrate ",
     ];
 
