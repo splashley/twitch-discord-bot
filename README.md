@@ -13,3 +13,4 @@ Using the quick-chat-bot library and primarily node.js, I created interactive cu
 - Setup Vue Confetti for the first time to create a confetti effect on a browser source when a specific command is used.
 - Integrated Spotify API to allow users to find out what current song is playing by entering a specific command.
 - Created a guessing number game for users, once a command is used the bot stores a random number between 1 and 100 in Firebase. Users (chatters) then have to guess what the number is. The bot communicates to the users whether their guess is correct or not. Once the correct answer is guessed, a new random number is selected and is updated in Firebase.
+- Created a rock, paper, scissors game where the user inputs an action of their choice then the bot randomly selects their own action along with the conclusion based on the actions that were performed.
