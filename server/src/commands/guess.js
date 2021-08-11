@@ -6,7 +6,6 @@ module.exports = {
     const guesser = tags.username;
     const parse = message.slice(1).split(" ");
     const guessedWord = parse.splice(1);
-    console.log(guessedWord);
     const checkAnswer = async () => {
       const { original, active } = await firebase.getGameStatus();
       if (active === false) {

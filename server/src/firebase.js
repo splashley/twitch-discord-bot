@@ -19,6 +19,8 @@ const highScoresDoc = db
   .doc("highScores")
   .collection("players");
 
+const taskManagement = db.collection("TaskManagement");
+
 const getGameStatus = async () => {
   const gameData = await docRef.get();
   return gameData.exists ? gameData.data() : null;
@@ -44,7 +46,37 @@ const setHighScores = async ({ username, numOfWins }) => {
   return highScoreData;
 };
 
+const setTask = async ({username, task}) => {
+  const taskData = await taskManagement
+  .doc(username)
+  .set({task, active: true})
+  return taskData;
+}
+
+const updateTask = async ({username, task}) => {
+  const taskData = await taskManagement
+  .doc(username)
+  .update({task, active: true})
+  return taskData;
+}
+
+const deleteTask = async ({username}) => {
+  const taskData = await taskManagement
+  .doc(username)
+  .update({task: "", active: false})
+  return taskData;
+}
+
+const getTask = async ({username}) => {
+  const getTaskData = await taskManagement.doc(username).get();
+  return getTaskData.exists ? getTaskData.data() : null;
+}
+
 module.exports = {
+  setTask,
+  updateTask,
+  deleteTask,
+  getTask,
   getGameStatus,
   setGameStatus,
   setHighScores,
