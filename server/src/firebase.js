@@ -46,37 +46,51 @@ const setHighScores = async ({ username, numOfWins }) => {
   return highScoreData;
 };
 
-const setTask = async ({username, task}) => {
+const setTask = async ({ username, task }) => {
   const taskData = await taskManagement
-  .doc(username)
-  .set({task, active: true})
+    .doc(username)
+    .set({ task, active: true });
   return taskData;
+};
+
+const updateTask = async ({ username, task }) => {
+  const taskData = await taskManagement
+    .doc(username)
+    .update({ task, active: true });
+  return taskData;
+};
+
+const deleteTask = async ({ username }) => {
+  const taskData = await taskManagement
+    .doc(username)
+    .update({ task: "", active: false });
+  return taskData;
+};
+
+const getTasks = async () => {
+  let tasks = [];
+  let activeTasks = await taskManagement.where("active", "==", true).get();
+  activeTasks.forEach((doc) => {
+    tasks.push({
+      id: doc.id,
+      active: doc.data().active,
+      task: doc.data().task,
+    });
+  });
+  return tasks;
 }
 
-const updateTask = async ({username, task}) => {
-  const taskData = await taskManagement
-  .doc(username)
-  .update({task, active: true})
-  return taskData;
-}
-
-const deleteTask = async ({username}) => {
-  const taskData = await taskManagement
-  .doc(username)
-  .update({task: "", active: false})
-  return taskData;
-}
-
-const getTask = async ({username}) => {
+const getTask = async ({ username }) => {
   const getTaskData = await taskManagement.doc(username).get();
   return getTaskData.exists ? getTaskData.data() : null;
-}
+};
 
 module.exports = {
   setTask,
   updateTask,
   deleteTask,
   getTask,
+  getTasks,
   getGameStatus,
   setGameStatus,
   setHighScores,

@@ -1,14 +1,21 @@
 <template>
-  <div id="overlay"></div>
+  <div>
+    <div id="overlay"></div>
+    <TaskManagement />
+  </div>
 </template>
 
 <script>
 import { overlayCollection } from "./firebase";
+import TaskManagement from "./components/TaskManagement";
 import Vue from "vue";
 import VueConfetti from "vue-confetti";
 Vue.use(VueConfetti);
 export default {
   name: "App",
+  components: {
+    TaskManagement,
+  },
   data() {
     return {
       state: undefined,
@@ -20,7 +27,7 @@ export default {
   watch: {
     state(val) {
       if (val === undefined) return;
-      if (val) this.startConfetti(3500);
+      if (val.active) this.startConfetti(3500);
     },
   },
   methods: {
@@ -31,24 +38,24 @@ export default {
     },
     startConfetti(ms) {
       this.$confetti.start({
-             particles: [
-            {
-              type: 'heart',
-            },
-            {
-              type: 'circle',
-            },
-          ],
-          defaultColors: [
-            'red',
-            'pink',
-            '#BDA0CB',
-            '#68228B',
-            '#FFBBFF',
-            "#FEDE00"
-
-          ],
-          defaultDropRate: 20, particlesPerFrame: 4
+        particles: [
+          {
+            type: "heart",
+          },
+          {
+            type: "circle",
+          },
+        ],
+        defaultColors: [
+          "red",
+          "pink",
+          "#BDA0CB",
+          "#68228B",
+          "#FFBBFF",
+          "#FEDE00",
+        ],
+        defaultDropRate: 20,
+        particlesPerFrame: 4,
       });
       setTimeout(() => {
         this.$confetti.stop();

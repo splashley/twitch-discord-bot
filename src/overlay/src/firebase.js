@@ -13,3 +13,17 @@ const firebaseApp = firebase.initializeApp(config);
 
 export const db = firebaseApp.firestore();
 export const overlayCollection = db.collection("overlays");
+const taskManagement = db.collection("TaskManagement");
+
+export const getTasks = async () => {
+  let tasks = [];
+  let activeTasks = await taskManagement.where("active", "==", true).get();
+  activeTasks.forEach((doc) => {
+    tasks.push({
+      id: doc.id,
+      active: doc.data().active,
+      task: doc.data().task,
+    });
+  });
+  return tasks;
+}
