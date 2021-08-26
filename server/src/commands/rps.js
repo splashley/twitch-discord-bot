@@ -38,6 +38,40 @@ module.exports = {
       );
     } else if (userAction === "scissors" && botAction === "paper") {
       client.say(channel, `Congrats ${username}! You cut splashleybot`);
+    } else if (userAction === "scissors" && botAction === "lizard") {
+      client.say(channel, `Congrats ${username}! You decapitated splashleybot`);
+    } else if (userAction === "scissors" && botAction === "spock") {
+      client.say(
+        channel,
+        `Sorry ${username}! Spock smashed the fuck out of you`
+      );
+    } else if (userAction === "paper" && botAction === "lizard") {
+      client.say(channel, `Sorry ${username}! Splashleybot ate you good`);
+    } else if (userAction === "paper" && botAction === "spock") {
+      client.say(channel, `Congrats ${username}! You disproved splashleybot`);
+    } else if (userAction === "rock" && botAction === "lizard") {
+      client.say(channel, `Congrats ${username}! You CRUSHED splashleybot`);
+    } else if (userAction === "rock" && botAction === "spock") {
+      client.say(channel, `Ouufff ${username}! Splashleybot vapourized you!`);
+    } else if (userAction === "lizard" && botAction === "spock") {
+      client.say(channel, `Congrats ${username}! You poisoned splashleybot`);
+    } else if (userAction === "spock" && botAction === "lizard") {
+      client.say(channel, `Uhoh ${username}! You got poisoned by splashleybot`);
+    } else if (userAction === "spock" && botAction === "paper") {
+      client.say(channel, `Sorry ${username}! Splashleybot disproved you!`);
+    } else if (userAction === "spock" && botAction === "rock") {
+      client.say(channel, `Congrats ${username}! You vapourized splashleybot`);
+    } else if (userAction === "spock" && botAction === "scissors") {
+      client.say(channel, `Congrats ${username}! You SMASHED splashleybot`);
+    } else if (userAction === "lizard" && botAction === "paper") {
+      client.say(channel, `Congrats ${username}! You ate splashleybot`);
+    } else if (userAction === "lizard" && botAction === "rock") {
+      client.say(channel, `Ouuff ${username}! Splashleybot crushed you`);
+    } else if (userAction === "lizard" && botAction === "scissors") {
+      client.say(
+        channel,
+        `Uhoh ${username}! Splashleybot decapitated you!! RIP`
+      );
     }
   },
 };
