@@ -17,13 +17,12 @@ export default {
   methods: {
     getTasks,
     async fetchTasks() {
-      this.tasks = await getTasks();
-    },
+       this.tasks = await getTasks();
+     }
   },
 
   async mounted() {
     await this.fetchTasks();
-    console.log(this.tasks);
   },
 };
 </script>
