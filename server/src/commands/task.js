@@ -1,4 +1,5 @@
 const firebase = require("../firebase");
+const authorized = require("../authorized");
 
 module.exports = {
   text: "!task",
@@ -7,6 +8,7 @@ module.exports = {
     const messageSplit = message.split(" ");
     let action = messageSplit[1];
     let onlyMsg = messageSplit.slice(2, messageSplit.length);
+    let deleteUser = messageSplit.slice(2, messageSplit.length);
     let taskHandler = onlyMsg.join(" ").toLowerCase();
 
     if (taskHandler.length > 50) {
@@ -26,6 +28,20 @@ module.exports = {
         case "update":
           firebase.updateTask({ username, task: taskHandler });
           client.say(channel, `Hey ${username}, your task has been updated!`);
+          break;
+        case "remove":
+          if (!authorized.includes(tags.username)) {
+            client.say(
+              channel,
+              "Sorry, only Splashley + mods can remove tasks"
+            );
+          } else {
+            firebase.deleteTask({ deleteUser });
+            client.say(
+              channel,
+              `Hey ${username}, ${deleteUser}'s task has been deleted!`
+            );
+          }
           break;
         case "delete":
           firebase.deleteTask({ username });

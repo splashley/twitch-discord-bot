@@ -13,22 +13,4 @@ const firebaseApp = firebase.initializeApp(config);
 
 export const db = firebaseApp.firestore();
 export const overlayCollection = db.collection("overlays");
-const taskManagement = db.collection("TaskManagement");
-
-export const getTasks = () => {
-  return new Promise(resolve => taskManagement
-    .where("active", "==", true)
-    .onSnapshot((querySnapshot) => {
-      let tasks = [];
-      querySnapshot.forEach((doc) => {
-        tasks.push({
-          id: doc.id,
-          active: doc.data().active,
-          task: doc.data().task,
-        });
-      });
-      console.log({tasks});
-      resolve(tasks)
-    })
-  )
-};
+export const taskManagement = db.collection("TaskManagement");

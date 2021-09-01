@@ -2,27 +2,38 @@
   <div class="task-management-bar">
     <ul class="task-management-text">
       <li class="item" v-for="(task, index) in tasks" :key="index">
-        | {{ task.id }} = {{ task.task }} |
+        👩‍💻 {{ task.id }}: {{ task.task }} 👨‍💻
       </li>
     </ul>
   </div>
 </template>
 
 <script>
-import { getTasks } from "../firebase";
+import { taskManagement } from "../firebase";
 export default {
   data() {
     return { tasks: null };
   },
   methods: {
-    getTasks,
-    async fetchTasks() {
-       this.tasks = await getTasks();
-     }
+     getTasks() {
+      taskManagement
+        .where("active", "==", true)
+        .onSnapshot((querySnapshot) => {
+          let tasks = [];
+          querySnapshot.forEach((doc) => {
+            tasks.push({
+              id: doc.id,
+              active: doc.data().active,
+              task: doc.data().task,
+            });
+          });
+          this.tasks = tasks
+        })
+      }
   },
 
   async mounted() {
-    await this.fetchTasks();
+    this.getTasks()
   },
 };
 </script>
@@ -30,7 +41,7 @@ export default {
 <style>
 .task-management-bar {
   display: flex;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Poppins', sans-serif;
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: center;
@@ -55,9 +66,9 @@ export default {
   -webkit-transform: translateX(100%);
   transform: translateX(100%);
 
-  -moz-animation: my-animation 45s linear infinite;
-  -webkit-animation: my-animation 45s linear infinite;
-  animation: my-animation 45s linear infinite;
+  -moz-animation: my-animation 60s linear infinite;
+  -webkit-animation: my-animation 60s linear infinite;
+  animation: my-animation 60s linear infinite;
 }
 
 .item {
