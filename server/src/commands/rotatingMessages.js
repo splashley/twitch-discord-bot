@@ -8,6 +8,7 @@ module.exports = {
       "For 1000 channel points, you can bet with/against other watchers on whether Splashley will chew on a bad or good jellybean.",
       "Play the WordGame! Type !wordgame to start!",
       "Thank you so much for watching this stream <3 It means a lot to me to have you here.",
+      "Splashley is now on Instagram! Go follow at www.instagram.com/splashleyonline",
       "Need some positive words of encouragement? Type !positive",
       "Guess the number! Type !guessnumber to start!",
       "Backseat programming is allowed but can get a bit overwhelming if too many people are helping at once!",
