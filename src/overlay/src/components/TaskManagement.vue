@@ -1,6 +1,8 @@
 <template>
   <div class="task-management-bar">
     <ul class="task-management-text">
+
+      <li>👩‍💻 Want to co-work? Enter !task for more info 👨‍💻</li>
       <li class="item" v-for="(task, index) in tasks" :key="index">
         👩‍💻 {{ task.id }}: {{ task.task }} 👨‍💻
       </li>
