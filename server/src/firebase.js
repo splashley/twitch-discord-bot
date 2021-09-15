@@ -20,6 +20,7 @@ const highScoresDoc = db
   .collection("players");
 
 const taskManagement = db.collection("TaskManagement");
+const pomodoro = db.collection("Pomodoro");
 
 const getGameStatus = async () => {
   const gameData = await docRef.get();
@@ -78,14 +79,22 @@ const getTasks = async () => {
     });
   });
   return tasks;
-}
+};
 
 const getTask = async ({ username }) => {
   const getTaskData = await taskManagement.doc(username).get();
   return getTaskData.exists ? getTaskData.data() : null;
 };
 
+const startTimer = async ({ number }) => {
+  const activateTimer = await pomodoro
+    .doc("Status")
+    .update({ active: true, countdown: number });
+    return activateTimer;
+};
+
 module.exports = {
+  startTimer,
   setTask,
   updateTask,
   deleteTask,
