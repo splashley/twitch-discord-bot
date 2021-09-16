@@ -53,7 +53,7 @@ export default {
   position: absolute;
   height: 50px;
   width: 100%;
-  background-color: #72657a;
+  background-color: #72657a90;
   overflow: hidden;
 }
 
