@@ -25,10 +25,6 @@ module.exports = {
             `Hey ${username}, your task has been added! Happy Co-Working!`
           );
           break;
-        case "update":
-          firebase.updateTask({ username, task: taskHandler });
-          client.say(channel, `Hey ${username}, your task has been updated!`);
-          break;
         case "remove":
           if (!authorized.includes(tags.username)) {
             client.say(
@@ -80,7 +76,7 @@ module.exports = {
         default:
           client.say(
             channel,
-            `Hey ${username}, To add a task, type !task add put your task here. To update, type !task update mytask. To delete, type !task delete. Happy Co-working!`
+            `Hey ${username}, To add a task, type !task add enter your task. To delete, type !task delete. Happy Co-working!`
           );
       }
     }

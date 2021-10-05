@@ -54,13 +54,6 @@ const setTask = async ({ username, task }) => {
   return taskData;
 };
 
-const updateTask = async ({ username, task }) => {
-  const taskData = await taskManagement
-    .doc(username)
-    .update({ task, active: true });
-  return taskData;
-};
-
 const deleteTask = async ({ username }) => {
   const taskData = await taskManagement
     .doc(username)
@@ -93,10 +86,15 @@ const startTimer = async ({ number }) => {
     return activateTimer;
 };
 
+const disableTimer = async () => {
+  const turnOffTimer = await pomodoro.doc("Status").update({active: false, countdown: 0});
+  return turnOffTimer;
+}
+
 module.exports = {
   startTimer,
+  disableTimer,
   setTask,
-  updateTask,
   deleteTask,
   getTask,
   getTasks,

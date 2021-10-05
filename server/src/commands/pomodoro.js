@@ -22,10 +22,29 @@ module.exports = {
           .catch((err) => console.log(err));
       }
       {
-        console.log("this is the else");
+        switch (action[0]) {
+          case "break":
+            firebase
+              .startTimer({ number: 5 })
+              .then((res) => console.log(res))
+              .catch((err) => console.log(err));
+            break;
+          case "reset":
+            firebase
+              .startTimer({ countdown: 0 })
+              .then((res) => console.log(res))
+              .catch((err) => console.log(err));
+            break;
+          case "disable":
+            firebase
+              .disableTimer()
+              .then((res) => console.log(res))
+              .catch((err) => console.log(err));
+          default:
+            console.log("We should never see this console log");
+            break;
+        }
       }
-      // Reset pomodoro !pomodoro reset
-      // Break time pomodoro !pomodoro break (5mins by default)
     }
   },
 };
