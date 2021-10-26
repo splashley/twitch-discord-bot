@@ -1,6 +1,7 @@
 <template>
   <div>
     <div id="overlay"></div>
+    <PomodoroTimer />
     <TaskManagement />
   </div>
 </template>
@@ -8,6 +9,7 @@
 <script>
 import { overlayCollection } from "./firebase";
 import TaskManagement from "./components/TaskManagement";
+import PomodoroTimer from "./components/PomodoroTimer";
 import Vue from "vue";
 import VueConfetti from "vue-confetti";
 Vue.use(VueConfetti);
@@ -15,6 +17,7 @@ export default {
   name: "App",
   components: {
     TaskManagement,
+    PomodoroTimer
   },
   data() {
     return {

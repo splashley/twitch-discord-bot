@@ -55,6 +55,7 @@ const setTask = async ({ username, task }) => {
 };
 
 const deleteTask = async ({ username }) => {
+  console.log("username", username);
   const taskData = await taskManagement
     .doc(username)
     .update({ task: "", active: false });
@@ -80,6 +81,7 @@ const getTask = async ({ username }) => {
 };
 
 const startTimer = async ({ number }) => {
+  console.log("number", number)
   const activateTimer = await pomodoro
     .doc("Status")
     .update({ active: true, countdown: number });

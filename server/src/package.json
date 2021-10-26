@@ -13,7 +13,7 @@
     "confetti-js": "^0.0.18",
     "dotenv": "^8.2.0",
     "firebase": "^8.2.10",
-    "nodemon": "^2.0.9",
+    "nodemon": "^2.0.14",
     "obs-websocket-js": "^4.0.2",
     "quick-chat-bot": "^0.8.0",
     "random-word": "^2.0.0",

@@ -18,13 +18,6 @@ module.exports = {
       );
     } else {
       switch (action) {
-        case "add":
-          firebase.setTask({ username, task: taskHandler });
-          client.say(
-            channel,
-            `Hey ${username}, your task has been added! Happy Co-Working!`
-          );
-          break;
         case "remove":
           if (!authorized.includes(tags.username)) {
             client.say(
@@ -32,7 +25,9 @@ module.exports = {
               "Sorry, only Splashley + mods can remove tasks"
             );
           } else {
-            firebase.deleteTask({ deleteUser });
+            let username = deleteUser[0];
+            console.log("deleteUser", username);
+            firebase.deleteTask({ username });
             client.say(
               channel,
               `Hey ${username}, ${deleteUser}'s task has been deleted!`
@@ -74,9 +69,11 @@ module.exports = {
           });
           break;
         default:
+          firebase.setTask({ username, task: taskHandler });
+          console.log(username);
           client.say(
             channel,
-            `Hey ${username}, To add a task, type !task add enter your task. To delete, type !task delete. Happy Co-working!`
+            `Hey ${username}, your task has been added! Happy Co-Working! Type !task delete to delete your task`
           );
       }
     }

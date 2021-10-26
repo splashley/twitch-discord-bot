@@ -31,7 +31,7 @@ module.exports = {
             break;
           case "reset":
             firebase
-              .startTimer({ countdown: 0 })
+              .startTimer({ number: 0 })
               .then((res) => console.log(res))
               .catch((err) => console.log(err));
             break;
@@ -40,8 +40,8 @@ module.exports = {
               .disableTimer()
               .then((res) => console.log(res))
               .catch((err) => console.log(err));
+            break;
           default:
-            console.log("We should never see this console log");
             break;
         }
       }
